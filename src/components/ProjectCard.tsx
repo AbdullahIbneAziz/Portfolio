@@ -8,16 +8,16 @@ interface ProjectCardProps {
   tags: string[];
 }
 
-export default function ProjectCard({ title, description, link, tags }: ProjectCardProps) {
+const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, link, tags }) => {
   return (
-    <div className="bg-zinc-900 p-6 rounded-lg hover:bg-zinc-800 transition-colors group">
-      <h3 className="text-xl font-bold mb-3">{title}</h3>
-      <p className="text-gray-400 mb-4">{description}</p>
-      <div className="flex flex-wrap gap-2 mb-6">
+    <div className="p-6 transition-all duration-300 bg-zinc-900 rounded-lg hover:bg-zinc-800">
+      <h3 className="mb-3 text-xl font-bold">{title}</h3>
+      <p className="mb-4 text-gray-400">{description}</p>
+      <div className="flex flex-wrap gap-2 mb-4">
         {tags.map((tag, index) => (
-          <span
+          <span 
             key={index}
-            className="px-3 py-1 bg-zinc-800 text-sm rounded-full text-gray-300 group-hover:bg-zinc-700"
+            className="px-3 py-1 text-sm text-red-500 bg-red-500/10 rounded-full"
           >
             {tag}
           </span>
@@ -27,10 +27,12 @@ export default function ProjectCard({ title, description, link, tags }: ProjectC
         href={link}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 text-red-500 hover:text-red-400 transition-colors"
+        className="flex items-center gap-2 text-red-500 hover:text-red-400"
       >
         View Project <ExternalLink size={16} />
       </a>
     </div>
   );
-}
+};
+
+export default ProjectCard;
