@@ -8,22 +8,22 @@ interface ProjectCardProps {
   tags: string[];
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, link, tags }) => {
+export default function ProjectCard({ title, description, link, tags }: ProjectCardProps) {
   return (
-    <div className="bg-zinc-900 rounded-lg p-8 hover:transform hover:scale-105 transition-all duration-300 group">
-      <h3 className="text-2xl font-bold mb-4 group-hover:text-red-500 transition-colors">{title}</h3>
-      <p className="text-gray-400 mb-6">{description}</p>
+    <div className="bg-zinc-900 p-6 rounded-lg hover:bg-zinc-800 transition-colors group">
+      <h3 className="text-xl font-bold mb-3">{title}</h3>
+      <p className="text-gray-400 mb-4">{description}</p>
       <div className="flex flex-wrap gap-2 mb-6">
         {tags.map((tag, index) => (
-          <span 
+          <span
             key={index}
-            className="bg-red-500/10 text-red-400 px-4 py-1 rounded-full text-sm"
+            className="px-3 py-1 bg-zinc-800 text-sm rounded-full text-gray-300 group-hover:bg-zinc-700"
           >
             {tag}
           </span>
         ))}
       </div>
-      <a 
+      <a
         href={link}
         target="_blank"
         rel="noopener noreferrer"
@@ -34,5 +34,3 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, link, tag
     </div>
   );
 }
-
-export default ProjectCard;

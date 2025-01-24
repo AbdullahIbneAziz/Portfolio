@@ -1,23 +1,24 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 interface SocialLinkProps {
   href: string;
-  icon: React.ReactNode;
+  icon: ReactNode;
   label: string;
 }
 
-const SocialLink: React.FC<SocialLinkProps> = ({ href, icon, label }) => {
+export default function SocialLink({ href, icon, label }: SocialLinkProps) {
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="w-14 h-14 rounded-full bg-zinc-800 hover:bg-red-500 flex items-center justify-center transition-colors"
+      className="flex items-center gap-4 text-gray-400 hover:text-red-500 transition-all duration-300 transform hover:translate-x-2 p-4 rounded-lg hover:bg-zinc-800 group"
       aria-label={label}
     >
-      {icon}
+      <div className="p-3 bg-zinc-800 rounded-lg group-hover:bg-zinc-700 transition-colors">
+        {icon}
+      </div>
+      <span className="text-lg font-medium">{label}</span>
     </a>
   );
 }
-
-export default SocialLink;
