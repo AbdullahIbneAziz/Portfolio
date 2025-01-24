@@ -33,21 +33,21 @@ function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen text-white bg-black">
       {/* Navigation */}
-      <nav className="fixed w-full z-50 bg-black/90 backdrop-blur-sm">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex justify-between items-center">
+      <nav className="fixed z-50 w-full bg-black/90 backdrop-blur-sm">
+        <div className="container px-4 py-4 mx-auto">
+          <div className="flex items-center justify-between">
             <div className="flex flex-col">
               <div className="text-2xl font-bold text-white">MD ABDULLAH IBNE AZIZ</div>
-              <div className="text-red-500 text-sm tracking-wider">Machine Learning Engineer</div>
+              <div className="text-sm tracking-wider text-red-500">Machine Learning Engineer</div>
             </div>
-            <div className="flex gap-8 items-center">
-              <a href="#home" className="hover:text-red-500 transition-colors duration-300">Home</a>
-              <a href="#projects" className="hover:text-red-500 transition-colors duration-300">Projects</a>
+            <div className="flex items-center gap-8">
+              <a href="#home" className="transition-colors duration-300 hover:text-red-500">Home</a>
+              <a href="#projects" className="transition-colors duration-300 hover:text-red-500">Projects</a>
               <button 
                 onClick={scrollToContact}
-                className="bg-red-500 hover:bg-red-600 px-6 py-2 rounded transition-all duration-300 hover:scale-105"
+                className="px-6 py-2 transition-all duration-300 bg-red-500 rounded hover:bg-red-600 hover:scale-105"
               >
                 Contact Now
               </button>
@@ -57,23 +57,22 @@ function App() {
       </nav>
 
       {/* Hero Section */}
-      <div id="home" className="min-h-screen relative flex items-center pt-20">
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/95 to-transparent z-10"></div>
-        <div className="container mx-auto px-4 flex items-center justify-between relative z-20">
+      <div id="home" className="relative flex items-center min-h-screen pt-20">
+        <div className="absolute inset-0 z-10 bg-gradient-to-r from-black via-black/95 to-transparent"></div>
+        <div className="container relative z-20 flex items-center justify-between px-4 mx-auto">
           <div className="max-w-2xl">
-            <div className="text-red-500 text-3xl font-bold mb-4 tracking-wider">MD ABDULLAH IBNE AZIZ</div>
-            <h1 className="text-6xl font-bold mb-6 leading-tight">
+            <h1 className="mb-6 text-6xl font-bold leading-tight">
               TRANSFORMING DATA
               <br />
               INTO INTELLIGENCE
               <br />
               ONE MODEL AT A TIME.
             </h1>
-            <button className="bg-red-500 hover:bg-red-600 text-white px-8 py-3 rounded flex items-center gap-2 transition-all duration-300 hover:scale-105">
+            <button className="flex items-center gap-2 px-8 py-3 text-white transition-all duration-300 bg-red-500 rounded hover:bg-red-600 hover:scale-105">
               VIEW PORTFOLIO <ExternalLink size={20} />
             </button>
           </div>
-          <div className="w-1/2 hidden lg:block">
+          <div className="hidden w-1/2 lg:block">
             <img 
               src="https://i.ibb.co/5899hbH/Pro-pic.jpg"
               alt="Md Abdullah Ibne Aziz"
@@ -85,10 +84,10 @@ function App() {
 
       {/* Projects Section */}
       <div id="projects" className="py-32 bg-black scroll-mt-20">
-        <div className="container mx-auto px-4">
-          <div className="text-red-500 mb-4 tracking-wider">HOW I MAKE AN IMPACT</div>
-          <h2 className="text-5xl font-bold mb-16">Featured Projects</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="container px-4 mx-auto">
+          <div className="mb-4 tracking-wider text-red-500">HOW I MAKE AN IMPACT</div>
+          <h2 className="mb-16 text-5xl font-bold">Featured Projects</h2>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project, index) => (
               <ProjectCard key={index} {...project} />
             ))}
@@ -98,14 +97,14 @@ function App() {
 
       {/* Contact Section */}
       <div ref={contactRef} id="contact" className="py-32 bg-zinc-900 scroll-mt-20">
-        <div className="container mx-auto px-4">
+        <div className="container px-4 mx-auto">
           <div className="max-w-4xl mx-auto">
-            <div className="text-red-500 mb-4 tracking-wider text-center">GET IN TOUCH</div>
-            <h2 className="text-5xl font-bold mb-8 text-center">Let's Work Together</h2>
-            <p className="text-xl text-gray-400 mb-12 text-center">
+            <div className="mb-4 tracking-wider text-center text-red-500">GET IN TOUCH</div>
+            <h2 className="mb-8 text-5xl font-bold text-center">Let's Work Together</h2>
+            <p className="mb-12 text-xl text-center text-gray-400">
               Ready to transform your data into actionable insights? Let's connect and discuss how we can leverage machine learning for your success.
             </p>
-            <div className="grid md:grid-cols-2 gap-12">
+            <div className="grid gap-12 md:grid-cols-2">
               <ContactForm />
               <div>
                 <div className="flex flex-col gap-6 mb-8">
@@ -115,14 +114,7 @@ function App() {
                   <SocialLink href="mailto:22203246@iubat.edu" icon={<Mail />} label="Email" />
                 </div>
                 <div className="space-y-4">
-                  <a 
-                    href="mailto:22203246@iubat.edu"
-                    className="inline-flex items-center gap-2 text-red-500 hover:text-red-400 text-xl transition-colors"
-                  >
-                    <Mail size={24} />
-                    22203246@iubat.edu
-                  </a>
-                  <p className="text-gray-400 italic">
+                  <p className="italic text-gray-400">
                     I typically respond to messages within 24 hours.
                   </p>
                 </div>
