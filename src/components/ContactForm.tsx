@@ -6,11 +6,20 @@ const ContactForm: React.FC = () => {
     email: '',
     message: ''
   });
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
+    setStatus('loading');
+    
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      setStatus('success');
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      setStatus('error');
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -35,6 +44,7 @@ const ContactForm: React.FC = () => {
           onChange={handleChange}
           required
           className="w-full px-4 py-2 bg-zinc-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+          disabled={status === 'loading'}
         />
       </div>
       <div>
@@ -49,6 +59,7 @@ const ContactForm: React.FC = () => {
           onChange={handleChange}
           required
           className="w-full px-4 py-2 bg-zinc-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+          disabled={status === 'loading'}
         />
       </div>
       <div>
@@ -63,13 +74,28 @@ const ContactForm: React.FC = () => {
           required
           rows={4}
           className="w-full px-4 py-2 bg-zinc-800 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-red-500"
+          disabled={status === 'loading'}
         />
       </div>
+      
+      {status === 'success' && (
+        <div className="p-4 text-green-400 bg-green-400/10 rounded-lg">
+          Message sent successfully!
+        </div>
+      )}
+      
+      {status === 'error' && (
+        <div className="p-4 text-red-400 bg-red-400/10 rounded-lg">
+          Failed to send message. Please try again.
+        </div>
+      )}
+
       <button
         type="submit"
-        className="w-full px-6 py-3 text-white transition-all duration-300 bg-red-500 rounded-lg hover:bg-red-600"
+        disabled={status === 'loading'}
+        className="w-full px-6 py-3 text-white transition-all duration-300 bg-red-500 rounded-lg hover:bg-red-600 disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        Send Message
+        {status === 'loading' ? 'Sending...' : 'Send Message'}
       </button>
     </form>
   );
