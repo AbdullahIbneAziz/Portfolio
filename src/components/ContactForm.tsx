@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 
-const ContactForm: React.FC = () => {
+interface ContactFormProps {
+  isDarkMode: boolean;
+}
+
+const ContactForm: React.FC<ContactFormProps> = ({ isDarkMode }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -33,7 +37,7 @@ const ContactForm: React.FC = () => {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>
-        <label htmlFor="name" className="block mb-2 text-sm font-medium">
+        <label htmlFor="name" className={`block mb-2 text-sm font-medium ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
           Name
         </label>
         <input
@@ -43,12 +47,16 @@ const ContactForm: React.FC = () => {
           value={formData.name}
           onChange={handleChange}
           required
-          className="w-full px-4 py-2 bg-zinc-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+          className={`w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 ${
+            isDarkMode 
+              ? 'bg-zinc-800 text-white' 
+              : 'bg-white text-gray-900 border border-gray-300'
+          }`}
           disabled={status === 'loading'}
         />
       </div>
       <div>
-        <label htmlFor="email" className="block mb-2 text-sm font-medium">
+        <label htmlFor="email" className={`block mb-2 text-sm font-medium ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
           Email
         </label>
         <input
@@ -58,12 +66,16 @@ const ContactForm: React.FC = () => {
           value={formData.email}
           onChange={handleChange}
           required
-          className="w-full px-4 py-2 bg-zinc-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+          className={`w-full px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 ${
+            isDarkMode 
+              ? 'bg-zinc-800 text-white' 
+              : 'bg-white text-gray-900 border border-gray-300'
+          }`}
           disabled={status === 'loading'}
         />
       </div>
       <div>
-        <label htmlFor="message" className="block mb-2 text-sm font-medium">
+        <label htmlFor="message" className={`block mb-2 text-sm font-medium ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
           Message
         </label>
         <textarea
@@ -73,7 +85,11 @@ const ContactForm: React.FC = () => {
           onChange={handleChange}
           required
           rows={4}
-          className="w-full px-4 py-2 bg-zinc-800 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-red-500"
+          className={`w-full px-4 py-2 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-red-500 ${
+            isDarkMode 
+              ? 'bg-zinc-800 text-white' 
+              : 'bg-white text-gray-900 border border-gray-300'
+          }`}
           disabled={status === 'loading'}
         />
       </div>
