@@ -17,7 +17,6 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectClick }) => {
       description: 'Deep learning system for real-time object detection and lane recognition in autonomous vehicles using YOLO and semantic segmentation.',
       image: 'https://images.pexels.com/photos/3862132/pexels-photo-3862132.jpeg?auto=compress&cs=tinysrgb&w=600',
       technologies: ['PyTorch', 'OpenCV', 'CUDA', 'ROS', 'Docker'],
-      github: 'https://github.com',
       demo: 'https://demo.com',
       content: {
         overview: 'Developed a comprehensive computer vision system for autonomous vehicles that processes real-time camera feeds to detect objects, pedestrians, and lane markings with 95% accuracy.',

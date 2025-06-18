@@ -25,7 +25,7 @@ const About: React.FC = () => {
               <div className="w-80 h-80 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 p-2">
                 <div className="w-full h-full rounded-full bg-gray-300 flex items-center justify-center overflow-hidden">
                   <img
-                    src="https://i.ibb.co/wFhNH0CN/Pro-pic.jpg"
+                    src="https://i.ibb.co/vCjvmW23/Pro-pic.jpg"
                     alt="Md Abdullah Ibne Aziz - ML Engineer"
                     className="w-full h-full object-cover rounded-full"
                     onError={(e) => {
